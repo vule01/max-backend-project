@@ -9,9 +9,10 @@ export const artists = sqliteTable("artists", {
 });
 
 export const releases = sqliteTable("releases", {
-    id: text("id").primaryKey(),
+    id: text("id").primaryKey().$defaultFn(() => randomUUID()),
     title: text("title").notNull(),
     release_date: text("release_date"),
-    release_status: text("release_status").notNull(),
+    status: text("status").notNull(),
+    genre: text("genre").notNull(),
     artist_id: text("artist_id").notNull().references(() => artists.id)
 });
