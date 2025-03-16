@@ -1,0 +1,31 @@
+{
+	"name": "max-artists",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"test": "vitest",
+		"cf-typegen": "wrangler types",
+		"sql": "wrangler d1 execute db --local --command",
+		"sql-file": "wrangler d1 execute db --local --file=./migrations/0000_schema.sql",
+		"migrate": "npx drizzle-kit generate --config config/drizzle.config.ts --name schema && npx drizzle-kit migrate --config config/drizzle.config.ts",
+		"prestart": "npm run migrate && npm run sql-file"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.7.5",
+		"@cloudflare/workers-types": "^4.20250310.0",
+		"@types/better-sqlite3": "^7.6.12",
+		"@types/node": "^22.13.10",
+		"typescript": "^5.5.2",
+		"vitest": "~3.0.7",
+		"wrangler": "^4.0.0"
+	},
+	"dependencies": {
+		"better-sqlite3": "^11.9.0",
+		"drizzle-kit": "^0.30.5",
+		"drizzle-orm": "^0.40.0",
+		"hono": "^4.7.4"
+	}
+}
