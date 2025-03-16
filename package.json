@@ -9,9 +9,8 @@
 		"test": "vitest",
 		"cf-typegen": "wrangler types",
 		"sql": "wrangler d1 execute db --local --command",
-		"sql-file": "wrangler d1 execute db --local --file=./migrations/0000_schema.sql",
-		"migrate": "npx drizzle-kit generate --config config/drizzle.config.ts --name schema && npx drizzle-kit migrate --config config/drizzle.config.ts",
-		"prestart": "npm run migrate && npm run sql-file"
+		"sql-file": "npm run migrate && wrangler d1 execute db --local --file",
+		"migrate": "npx drizzle-kit generate --config config/drizzle.config.ts --name schema && npx drizzle-kit migrate --config config/drizzle.config.ts"
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.7.5",
