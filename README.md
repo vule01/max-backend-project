@@ -43,6 +43,42 @@ Make sure you have the following installed on your system:
    npm start
    ```
 
+## APIs
+**POST /artists**
+```bash
+curl --location 'http://localhost:8787/artists' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "Jane Doe",
+    "bio": "Indie pop sensation",
+    "genre": "Indie Pop"
+}'
+```
+
+**GET /artists**
+```bash
+curl --location 'http://localhost:8787/artists'
+```
+
+**POST /releases**
+Fill in the artist_id with any id from GET /artists
+```bash
+curl --location 'http://localhost:8787/releases' \
+--header 'Content-Type: application/json' \
+--data '{
+   "title": "Breaking Free",
+   "release_date": "2025-04-01",
+   "status": "unreleased",
+   "genre": "Indie Pop",
+   "artist_id": "artist_123"
+}'
+```
+
+**GET /releases**
+```bash
+curl --location 'http://localhost:8787/releases'
+```
+
 ## Notes
 
 - The migrations are stored in the `./migrations` folder which will be created after you first run the database setup script. The first migration file is `0000_schema.sql`. Subsequent ones will have the number incremented, ex. `0001_schema.sql`.
